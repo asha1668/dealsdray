@@ -1,23 +1,41 @@
-import logo from './logo.svg';
+import { AllRoutes } from "./routes/AllRoutes";
 import './App.css';
+import { useEffect, useState } from "react";
+
+
 
 function App() {
+
+  const [storedData, setStoredData] = useState(JSON.parse(localStorage.getItem('employees')) || []);
+const date = new Date();
+  const [formData, setFormData] = useState({
+  id:'',
+  name: '',
+  email: '',
+  mobileNo: '',
+  designation: '',
+  gender: '',
+  courses: [],
+  image: '',
+  date:`${date.toLocaleDateString()}`});
+
+  const [tasks, setTasks] = useState({});
+
+useEffect(() =>{
+localStorage.setItem("employees", JSON.stringify(storedData))
+},[storedData])
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <AllRoutes
+    storedData = {storedData}
+    setStoredData = {setStoredData}
+    formData ={formData}
+    setFormData = {setFormData}
+    tasks={tasks}
+    setTasks ={setTasks}
+    />
     </div>
   );
 }
