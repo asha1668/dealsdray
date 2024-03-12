@@ -101,7 +101,7 @@ export const Createemploye = ({tasks, setTasks, storedData, setStoredData, formD
         <label>Image Upload:</label>
         <input type="file" name="image" onChange={handleFileChange} />
       </div>
-      <button type="submit"> <button type="submit">{ tasks.id ? "Update" : "Add" }</button></button>
+      <button type="submit">Submit</button>
     </form>
 
 
